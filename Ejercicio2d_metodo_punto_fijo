@@ -1,0 +1,30 @@
+# Ejercicio 2d: Método del punto fijo
+def g(x):
+    return (x**3 + 14*x - 6) / (7*x)
+
+
+# establezco mis valores iniciales
+x_actual = 2.95
+tolerancia = 0.5
+iteracion = 1
+error = 100.0
+
+print(f"{'Iteración (n)':<15} | {'x_n':<10} | {'Error (%)':<10}")
+print("-" * 43)
+
+print(f"{0:<15} | {x_actual:<10.5f} | {'-':<10}")
+
+# Bucle while
+while error > tolerancia and iteracion <= 6:
+    x_nuevo = g(x_actual)
+    error = abs((x_nuevo - x_actual) / x_nuevo) * 100
+    
+    # Imprimo cada fila
+    print(f"{iteracion:<15} | {x_nuevo:<10.5f} | {error:<10.5f}")
+    
+    x_actual = x_nuevo
+    iteracion += 1
+
+
+print("-" * 43)
+print(f"✅ Raíz aproximada: {x_actual:.5f} con un error de {error:.5f}%")
